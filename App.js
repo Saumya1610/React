@@ -2,26 +2,21 @@
 // heading.innerHTML = "hello world from JavaScript"
 // document.getElementById("root").appendChild(heading)
 
+import React from "react";
+import { ReactDOM } from "react-dom";
+import { createRoot } from 'react-dom/client';
 
-const heading1 = React.createElement(
-    "h1", {
-    id: "title",
-    style: {
-        background:"red",
-      },
-    className: 'heading1',
-}, 
-"Heading 1")
-const heading2 = React.createElement(
-    "h2", {
-    id: "title",
-    className: 'heading2',
-}, 
-"Heading 2")
-const container = React.createElement(
-    "div", {
-    id: "container",
-}, 
-[heading1,heading2])
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(container)
+
+const parent = React.createElement("div", {id: "parent"},[
+    React.createElement("div", {id: "child1"},[
+        React.createElement("h1", {}, "I'm H1 tag"),
+        React.createElement("h2", {}, "I'm H2 tag")
+    ]),
+    React.createElement("div", {id: "child2"},[
+        React.createElement("h1", {}, "I'm H1 tag"),
+        React.createElement("h2", {}, "I'm H2 tag")
+    ]),
+])
+// const root = ReactDOM.createRoot(document.getElementById("root"))
+const root = createRoot(document.getElementById('root'));
+root.render(parent)
